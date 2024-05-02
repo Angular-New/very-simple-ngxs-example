@@ -5,18 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { NgxsModule } from '@ngxs/store';
+import { PostsState } from './store/posts.state';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    PostsComponent
-  ],
+  declarations: [AppComponent, HomeComponent, PostsComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxsModule.forRoot([PostsState]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
