@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { PostsState } from '../../store/posts.state';
-import { PostTitle } from '../../store/posts.action';
+import { PostTitleAction } from '../../store/posts.action';
 
 @Component({
   selector: 'xs-home',
@@ -16,6 +16,6 @@ export class HomeComponent {
   @Select(PostsState.title) title$!: Observable<string>;
 
   public handleClick(): void {
-    this.store.dispatch(new PostTitle()).subscribe();
+    this.store.dispatch(new PostTitleAction()).subscribe();
   }
 }

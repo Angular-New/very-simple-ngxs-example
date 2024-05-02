@@ -1,1 +1,5 @@
 <p>posts works!</p>
+
+@for(post of posts$ | async; track post.id) {
+  <xs-post [post]="post" />
+}
