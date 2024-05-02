@@ -47,17 +47,13 @@ export class PostsState {
   }
 
   @Action(GetPostsAction)
-  getPostsAction(
-    ctx: StateContext<PostsStateModel>,
-    action: GetPostsAction
-  ): Observable<IPost[]> {
+  getPostsAction(ctx: StateContext<PostsStateModel>): Observable<IPost[]> {
     return this.postsService.getAllPosts().pipe(
       tap((posts: IPost[]) => {
-        console.log('this.postsService.getAllPosts >>>', posts);
         const state = ctx.getState();
         ctx.setState({
           ...state,
-          posts: [...state.posts],
+          posts: [...state.posts, ...posts],
         });
       })
     );

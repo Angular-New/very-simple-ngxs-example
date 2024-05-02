@@ -1,8 +1,8 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   inject,
-  OnInit,
 } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { GetPostsAction } from '../../store/posts.action';
@@ -16,12 +16,13 @@ import { PostsState } from '../../store/posts.state';
   styleUrl: './posts.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements AfterViewInit {
   private readonly store = inject(Store);
 
-  @Select(PostsState.posts) posts$!: Observable<IPost[]>;
+  @Select(PostsState.posts)
+  public readonly posts$!: Observable<IPost[]>;
 
-  public ngOnInit(): void {
+  public ngAfterViewInit(): void {
     this.store.dispatch(new GetPostsAction()).subscribe();
   }
 }

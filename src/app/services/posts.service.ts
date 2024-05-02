@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IPost } from '../types';
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://jsonplaceholder.typicode.com';
 
 @Injectable({
   providedIn: 'root',

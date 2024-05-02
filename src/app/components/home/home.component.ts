@@ -13,7 +13,8 @@ import { PostTitleAction } from '../../store/posts.action';
 export class HomeComponent {
   private readonly store = inject(Store);
 
-  @Select(PostsState.title) title$!: Observable<string>;
+  @Select(PostsState.title)
+  public readonly title$!: Observable<string>;
 
   public handleClick(): void {
     this.store.dispatch(new PostTitleAction()).subscribe();
